@@ -49,6 +49,9 @@ class TestStringCalculator(unittest.TestCase):
         
     def test_number_greater_than_1000(self):
         self.assertEqual(2, self.test_sc.Add("2, 1002"))
-        
+    
+    def test_delimeter_with_long_length(self):
+        self.assertEqual(6, self.test_sc.Add("//$$$$$\n1$$$$$2$$$$$3"))
+
 if __name__ == '__main__':
     unittest.main()
