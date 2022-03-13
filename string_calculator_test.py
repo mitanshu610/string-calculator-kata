@@ -32,6 +32,13 @@ class TestStringCalculator(unittest.TestCase):
             self.test_sc.Add("1,2, r")
         )
     
+    def test_string_with_custom_delimeter_colon(self):
+        self.assertEqual(23, self.test_sc.Add("//:\n1:22"))
+    
+    def test_string_with_custom_delimeter_random_characters(self):
+        self.assertEqual(23, self.test_sc.Add("//xyz\n1xyz22"))
+    
+    
         
 if __name__ == '__main__':
     unittest.main()
