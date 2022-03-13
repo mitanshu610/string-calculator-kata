@@ -6,10 +6,19 @@ class StringCalculator():
         else:
             cleaned_string = self.cleanup_the_string(string).split(",")
             try:
-                result = sum(int(character) for character in cleaned_string)
+                summation = 0
+                negative_numbers = list()
+                for character in cleaned_string:
+                    if "-" in character:
+                        negative_numbers.append(int(character))
+                    else:
+                        summation += int(character)
+                if negative_numbers:
+                    raise Exception("Negative numbers detected: {}".format(negative_numbers))
+
             except ValueError:
-                return "Character different from numbers detected! please insert numbers for the addition"
-            return result
+                raise Exception("Character different from numbers detected! please insert numbers for the addition")
+            return summation
     
     def cleanup_the_string(self, string: str):
         clean_string = string
@@ -23,4 +32,7 @@ class StringCalculator():
         temp_string = custom_delimeter[2:]
         custom_string = summation_string.replace(temp_string, ",")
         return custom_string
-    
+            
+SC = StringCalculator()
+print(SC.Add("-1,2,-7,-8,9"))
+        

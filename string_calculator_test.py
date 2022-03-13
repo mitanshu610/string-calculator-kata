@@ -27,10 +27,12 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(198, self.test_sc.Add("1\n102,5\n90"))
 
     def test_string_with_characters_and_numbers_to_add(self):
-        self.assertEqual(
-            "Character different from numbers detected! please insert numbers for the addition",
+        with self.assertRaises(Exception):
             self.test_sc.Add("1,2, r")
-        )
+    
+    def test_string_with_single_character_as_string(self):
+        with self.assertRaises(Exception):
+            self.test_sc.Add("r")
     
     def test_string_with_custom_delimeter_colon(self):
         self.assertEqual(23, self.test_sc.Add("//:\n1:22"))
@@ -38,7 +40,12 @@ class TestStringCalculator(unittest.TestCase):
     def test_string_with_custom_delimeter_random_characters(self):
         self.assertEqual(23, self.test_sc.Add("//xyz\n1xyz22"))
     
+    def test_string_with_negative_numbers(self):
+        with self.assertRaises(Exception):
+            self.test_sc.Add("-1,2,-3")
     
+    def test_string_with_hyphen_as_delimeter(self):
+        self.assertEqual(6, self.test_sc.Add("//-\n1-2-3"))
         
 if __name__ == '__main__':
     unittest.main()
