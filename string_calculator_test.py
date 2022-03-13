@@ -25,6 +25,13 @@ class TestStringCalculator(unittest.TestCase):
 
     def test_string_with_multiple_new_lines(self):
         self.assertEqual(198, self.test_sc.Add("1\n102,5\n90"))
+
+    def test_string_with_characters_and_numbers_to_add(self):
+        self.assertEqual(
+            "Character different from numbers detected! please insert numbers for the addition",
+            self.test_sc.Add("1,2, r")
+        )
+    
         
 if __name__ == '__main__':
     unittest.main()
