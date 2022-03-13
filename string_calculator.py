@@ -11,7 +11,7 @@ class StringCalculator():
                 for character in cleaned_string:
                     if "-" in character:
                         negative_numbers.append(int(character))
-                    else:
+                    elif int(character) <= 1000:
                         summation += int(character)
                 if negative_numbers:
                     raise Exception("Negative numbers detected: {}".format(negative_numbers))
@@ -32,7 +32,3 @@ class StringCalculator():
         temp_string = custom_delimeter[2:]
         custom_string = summation_string.replace(temp_string, ",")
         return custom_string
-            
-SC = StringCalculator()
-print(SC.Add("-1,2,-7,-8,9"))
-        

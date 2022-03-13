@@ -47,5 +47,8 @@ class TestStringCalculator(unittest.TestCase):
     def test_string_with_hyphen_as_delimeter(self):
         self.assertEqual(6, self.test_sc.Add("//-\n1-2-3"))
         
+    def test_number_greater_than_1000(self):
+        self.assertEqual(2, self.test_sc.Add("2, 1002"))
+        
 if __name__ == '__main__':
     unittest.main()
