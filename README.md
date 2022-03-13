@@ -1,5 +1,12 @@
 # string-calculator-kata
 
+## Run Test Cases
+
+Run the test cases file using the following command:
+```
+python <test_file>.py
+``` 
+
 ## Tasks
 
 1. Create a simple String calculator with a method signature:
