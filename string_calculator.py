@@ -4,14 +4,14 @@ import re
 class StringCalculator():
     """
     Contains functions to add numbers from 
-    string (which may contain custom delimeters and new lines) by cleaning it up
+    string (which may contain custom delimiters and new lines) by cleaning it up
     """
 
     def Add(self, string: str):
-        """Add numbers from a given string of numbers and delimeter
+        """Add numbers from a given string of numbers and delimiter
 
         Args:
-            string (str): string containing numbers and delimeter
+            string (str): string containing numbers and delimiter
 
         Raises:
             Exception: When negative numbers are detected
@@ -41,13 +41,13 @@ class StringCalculator():
 
     
     def cleanup_the_string(self, string: str):
-        """clean up the string containing new lines and custom delimeter
+        """clean up the string containing new lines and custom delimiter
 
         Args:
-            string (str): string that may contain new lines and custom delimeters
+            string (str): string that may contain new lines and custom delimiters
 
         Returns:
-            str: cleaned up string which contains only integers with default delimeter i.e. ','
+            str: cleaned up string which contains only integers with default delimiter i.e. ','
         """
         clean_string = string
         if string.startswith("//"):
@@ -57,20 +57,20 @@ class StringCalculator():
 
 
     def allow_custom_delimiter(self, string: str):
-        """Replaces custom delimeters with default delimeter i.e. ','
+        """Replaces custom delimiters with default delimiter i.e. ','
 
         Args:
-            string (str): string containing custom delimeters
+            string (str): string containing custom delimiters
 
         Returns:
-            str: string with replaced custom delimeters and no // in start index
+            str: string with replaced custom delimiters and no // in start index
         """
-        custom_delimeter, summation_string = string.split("\n", 1)
-        delimeters = re.findall(r'\[.*?\]', custom_delimeter[2:])
-        if delimeters:
-            for d in delimeters:
+        custom_delimiter, summation_string = string.split("\n", 1)
+        delimiters = re.findall(r'\[.*?\]', custom_delimiter[2:])
+        if delimiters:
+            for d in delimiters:
                 delm = d.replace("[", "").replace("]","")
                 summation_string = summation_string.replace(delm, ",")
         else:
-            summation_string = summation_string.replace(custom_delimeter[2:], ",")
+            summation_string = summation_string.replace(custom_delimiter[2:], ",")
         return summation_string
