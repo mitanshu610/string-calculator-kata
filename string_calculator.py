@@ -1,9 +1,12 @@
+import re
+
+
 class StringCalculator():
     """
     Contains functions to add numbers from 
     string (which may contain custom delimeters and new lines) by cleaning it up
     """
-    
+
     def Add(self, string: str):
         """Add numbers from a given string of numbers and delimeter
 
@@ -41,7 +44,7 @@ class StringCalculator():
         """clean up the string containing new lines and custom delimeter
 
         Args:
-            string (str): string that may contain new lines and custom delimeter
+            string (str): string that may contain new lines and custom delimeters
 
         Returns:
             str: cleaned up string which contains only integers with default delimeter i.e. ','
@@ -54,15 +57,20 @@ class StringCalculator():
 
 
     def allow_custom_delimiter(self, string: str):
-        """Replaces custom delimeter with default delimeter i.e. ','
+        """Replaces custom delimeters with default delimeter i.e. ','
 
         Args:
-            string (str): string containing custom delimeter
+            string (str): string containing custom delimeters
 
         Returns:
-            str: string with replaced custom delimeter and no // in start index
+            str: string with replaced custom delimeters and no // in start index
         """
         custom_delimeter, summation_string = string.split("\n", 1)
-        temp_string = custom_delimeter[2:]
-        custom_string = summation_string.replace(temp_string, ",")
-        return custom_string
+        delimeters = re.findall(r'\[.*?\]', custom_delimeter[2:])
+        if delimeters:
+            for d in delimeters:
+                delm = d.replace("[", "").replace("]","")
+                summation_string = summation_string.replace(delm, ",")
+        else:
+            summation_string = summation_string.replace(custom_delimeter[2:], ",")
+        return summation_string

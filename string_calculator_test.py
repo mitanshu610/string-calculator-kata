@@ -53,5 +53,8 @@ class TestStringCalculator(unittest.TestCase):
     def test_delimeter_with_long_length(self):
         self.assertEqual(6, self.test_sc.Add("//$$$$$\n1$$$$$2$$$$$3"))
 
+    def test_multiple_delimeters(self):
+        self.assertEqual(6, self.test_sc.Add("//[****][%xyz]\n1****2%xyz3"))
+
 if __name__ == '__main__':
     unittest.main()
