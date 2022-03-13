@@ -19,6 +19,12 @@ class TestStringCalculator(unittest.TestCase):
 
     def test_string_with_multiple_numbers_and_spaces(self):
         self.assertEqual(13, self.test_sc.Add(" 1, 2,3, 7"))
+
+    def test_string_with_new_line(self):
+        self.assertEqual(198, self.test_sc.Add("1\n102,5,90"))
+
+    def test_string_with_multiple_new_lines(self):
+        self.assertEqual(198, self.test_sc.Add("1\n102,5\n90"))
         
 if __name__ == '__main__':
     unittest.main()
